@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import type { Character } from '../../types'
 
 import Card from './index'
@@ -7,10 +9,17 @@ interface GameCardsProps {
 }
 
 const GameCards = ({ casts }: GameCardsProps) => {
+  const [isFlipped, setIsFlipped] = useState(true)
+
   return (
     <div className="game-grid">
       {casts.map((cast) => (
-        <Card key={cast.id} cast={cast} />
+        <Card 
+          key={cast.id} 
+          cast={cast}
+          isFlipped={isFlipped}
+          setIsFlipped={setIsFlipped}
+        />
       ))}
     </div>
   );

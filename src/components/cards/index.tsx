@@ -1,17 +1,28 @@
+import type React from 'react';
 import type { Character }  from '../../types'
 
 interface CardProps {
   cast: Character
+  isFlipped: boolean
+  setIsFlipped: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const Card = ({ cast }: CardProps) => {
+const Card = ({ cast, isFlipped, setIsFlipped }: CardProps) => {
+  const flipCard = () => {
+    setIsFlipped(!isFlipped)
+    setTimeout(() => {
+      setIsFlipped(isFlipped)
+    }, 800)
+  }
+  
   return (
     <div
-      className="memory-card is-flipped"
+      className={`memory-card ${isFlipped ? 'is-flipped' : ''}`}
       tabIndex={0}
       role="button"
+      onClick={flipCard}
     >
-      <div className="memory-card-inner ">
+      <div className="memory-card-inner">
         <div className="memory-card-face memory-card-back">
           <span className="memory-card-mark">?</span>
         </div>

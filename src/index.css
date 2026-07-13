@@ -1,0 +1,93 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --heading-font: "Special Elite", system-ui;
+  --body-font: "Source Sans 3", sans-serif;
+}
+
+body {
+  background: url('./assets/background.avif');
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+#game-title {
+  width: fit-content;
+  margin-inline: auto;
+  font-family: var(--heading-font);
+  font-size: clamp(2.5rem, 5vw, 5rem);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: clamp(0.05rem, 0.25vw, 0.2rem);
+  text-align: center;
+  margin-top: 5rem;
+
+  color: #181818;
+  text-shadow:
+    0.04em 0.04em 0 #d6d1c7,
+    0.08em 0.08em 0 rgba(0, 0, 0, 0.12);
+
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 0.08em solid currentColor;
+
+  transform: rotate(-1deg);
+  animation:
+    typing 2.2s steps(23, end) forwards,
+    cursor-blink 700ms step-end infinite,
+    camera-shake 350ms ease-out 2.2s;
+}
+
+@keyframes typing {
+  from {
+    max-width: 0;
+  }
+
+  to {
+    max-width: 100%;
+  }
+}
+
+@keyframes cursor-blink {
+  50% {
+    border-color: transparent;
+  }
+}
+
+@keyframes camera-shake {
+  0% {
+    transform: rotate(0deg) translate(0);
+  }
+
+  25% {
+    transform: rotate(-0.4deg) translate(-0.04em, 0.02em);
+  }
+
+  50% {
+    transform: rotate(0.3deg) translate(0.03em, -0.02em);
+  }
+
+  75% {
+    transform: rotate(-0.2deg) translate(-0.02em, 0.01em);
+  }
+
+  100% {
+    transform: rotate(-1deg) translate(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .game-title {
+    animation: none;
+    border-right: none;
+    max-width: 100%;
+  }
+}

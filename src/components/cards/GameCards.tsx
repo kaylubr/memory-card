@@ -1,9 +1,19 @@
-import React from 'react'
+import type { Character } from '../../types'
 
-const GameCards = () => {
-  return (
-    <div>GameCards</div>
-  )
+import Card from './index'
+
+interface GameCardsProps {
+  casts: Character[]
 }
+
+const GameCards = ({ casts }: GameCardsProps) => {
+  return (
+    <div className="game-grid">
+      {casts.map((cast) => (
+        <Card key={cast.id} cast={cast} />
+      ))}
+    </div>
+  );
+};
 
 export default GameCards

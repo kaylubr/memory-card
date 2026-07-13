@@ -19,6 +19,19 @@ body {
   overflow: hidden;
 }
 
+#root {
+  min-height: 100vh;
+}
+
+.default-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 100vh;
+  padding: 5rem 0 10rem;
+}
+
 #game-title {
   width: fit-content;
   margin-inline: auto;
@@ -28,7 +41,6 @@ body {
   line-height: 1;
   letter-spacing: clamp(0.05rem, 0.25vw, 0.2rem);
   text-align: center;
-  margin-top: 5rem;
 
   color: #181818;
   text-shadow:
@@ -44,6 +56,56 @@ body {
     typing 2.2s steps(23, end) forwards,
     cursor-blink 700ms step-end infinite,
     camera-shake 350ms ease-out 2.2s;
+}
+
+.start-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-inline-size: clamp(9rem, 16vw, 13rem);
+  padding: 0.7em 1.6em;
+
+  font-family: var(--heading-font);
+  font-size: clamp(1rem, 1.2vw, 1.25rem);
+  font-weight: 400;
+  letter-spacing: 0.06em;
+
+  color: #181818;
+  background: #d6d1c7;
+
+  border: 0.08em solid #8a8377;
+  border-radius: 0.08em;
+
+  box-shadow:
+    inset 0 0.08em 0 rgba(255, 255, 255, 0.5),
+    0.04em 0.04em 0 rgba(0, 0, 0, 0.15);
+
+  cursor: pointer;
+  transform: rotate(0.6deg);
+
+  transition:
+    background-color 140ms ease,
+    border-color 140ms ease,
+    transform 140ms ease;
+}
+
+.start-button:hover {
+  background: #e4e0d5;
+  border-color: #6f6a5f;
+  transform: rotate(0.6deg) translateY(-0.08em);
+}
+
+.start-button:active {
+  background: #c3beb2;
+  transform: rotate(0.6deg) translateY(0.04em);
+  box-shadow:
+    inset 0 0.12em 0.2em rgba(0, 0, 0, 0.18);
+}
+
+.start-button:focus-visible {
+  outline: 0.15em solid #7a4a2f;
+  outline-offset: 0.22em;
 }
 
 @keyframes typing {
@@ -85,9 +147,13 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .game-title {
+  #game-title {
     animation: none;
     border-right: none;
     max-width: 100%;
+  }
+
+  .start-button {
+    transition: none;
   }
 }

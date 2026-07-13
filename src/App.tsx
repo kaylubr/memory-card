@@ -1,5 +1,19 @@
+import { useState } from "react"
+
+import DefaultScreen from "./components/DefaultScreen"
+
 function App() {
-  return <h1 id="game-title">Dunder Mifflin Memory Match</h1>
+  const [isGameActive, setIsGameActive] = useState(false)
+
+  if (!isGameActive) {
+    return <DefaultScreen toggleActive={setIsGameActive}/>
+  }
+
+  return (
+    <>
+      <h1>uuuur</h1>
+    </>
+  ) 
 }
 
 export default App

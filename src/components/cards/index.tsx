@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import type { Character }  from '../../types'
 
 interface CardProps {
@@ -6,23 +5,13 @@ interface CardProps {
 }
 
 const Card = ({ cast }: CardProps) => {
-  const [isFlipped, setIsFlipped] = useState(false);
-
   return (
     <div
-      className={`memory-card${isFlipped ? ' is-flipped' : ''}`}
+      className="memory-card is-flipped"
       tabIndex={0}
       role="button"
-      aria-label={isFlipped ? cast.name : 'Reveal card'}
-      onClick={() => setIsFlipped((prev) => !prev)}
-      onKeyDown={(e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          setIsFlipped((prev) => !prev);
-        }
-      }}
     >
-      <div className="memory-card-inner">
+      <div className="memory-card-inner ">
         <div className="memory-card-face memory-card-back">
           <span className="memory-card-mark">?</span>
         </div>

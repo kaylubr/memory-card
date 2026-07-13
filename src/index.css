@@ -160,7 +160,7 @@ body {
 .memory-card {
   position: relative;
   width: clamp(6rem, 14vw, 9rem);
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 3 / 4.4;
   perspective: 1000px;
   cursor: pointer;
 }
@@ -246,6 +246,32 @@ body {
   color: #4a4438;
   text-align: center;
   line-height: 1.1;
+}
+
+.memory-card-inner {
+  transition:
+    transform 480ms cubic-bezier(0.34, 1.56, 0.64, 1),
+    filter 200ms ease;
+}
+
+.memory-card:not(.is-flipped):hover .memory-card-inner {
+  transform: rotate(-2deg) scale(1.06) translateY(-0.15em);
+  filter: brightness(1.03);
+}
+
+.memory-card:not(.is-flipped):hover .memory-card-face {
+  box-shadow:
+    0.06em 0.08em 0 rgba(0, 0, 0, 0.1),
+    0.2em 0.28em 0.4em rgba(0, 0, 0, 0.2);
+}
+
+.memory-card.is-flipped:hover .memory-card-inner {
+  transform: rotate(1deg) rotateY(180deg) scale(1.06) translateY(-0.15em);
+}
+
+.memory-card.is-matched:hover .memory-card-inner {
+  transform: rotate(1deg) rotateY(180deg);
+  cursor: default;
 }
 
 @keyframes typing {

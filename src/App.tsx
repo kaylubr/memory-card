@@ -1,19 +1,31 @@
-import { useState } from "react"
+import { useEffect, useState, type ChangeEvent } from "react"
 
 import DefaultScreen from "./components/DefaultScreen"
+import GameScreen from "./components/GameScreen"
+
+import { getCharacters } from "./services/characters"
+
+import type { Character } from "./types"
+
 
 function App() {
   const [isGameActive, setIsGameActive] = useState(false)
+  const [casts, setCasts] = useState<Character[]>([])
 
-  if (!isGameActive) {
-    return <DefaultScreen toggleActive={setIsGameActive}/>
-  }
+  useEffect(() => {
+    const fetchCharacters = async () => {
+      try {
+        const fetchedCasts = await getCharacters();
+        setCasts(fetchedCasts);
+      } catch (error) {
+        console.error("Failed to fetch characters:", error);
+      }
+    };
 
-  return (
-    <>
-      <h1>uuuur</h1>
-    </>
-  ) 
+    fetchCharacters();
+  }, [])
+
+  return isGameActive ? <GameScreen casts={casts} /> : <DefaultScreen toggleActive={setIsGameActive}/>
 }
 
 export default App

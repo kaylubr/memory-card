@@ -273,6 +273,18 @@ header {
   75% { transform: rotate(-0.2deg) translate(-0.02em, 0.01em); }
 }
 
+@media (max-width: 64rem) {
+  .game-grid {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 48rem) {
+  .game-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 40rem) {
   header {
     align-items: flex-start;
@@ -292,6 +304,10 @@ header {
     white-space: normal;
     border-right: 0;
     animation: none;
+  }
+
+  .game-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   header > div {

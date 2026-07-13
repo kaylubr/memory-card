@@ -59,48 +59,73 @@ body {
 }
 
 .start-button {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
 
-  min-inline-size: clamp(9rem, 16vw, 13rem);
-  padding: 0.7em 1.6em;
+  min-inline-size: clamp(12rem, 22vw, 18rem);
+  padding: 1.1em 2.2em 1em;
 
   font-family: var(--heading-font);
-  font-size: clamp(1rem, 1.2vw, 1.25rem);
+  font-size: clamp(1.3rem, 2vw, 1.75rem);
   font-weight: 400;
   letter-spacing: 0.06em;
 
-  color: #181818;
-  background: #d6d1c7;
+  color: #4a4438;
+  text-shadow:
+    0 0.06em 0 rgba(255, 255, 255, 0.7),
+    0 -0.01em 0 rgba(0, 0, 0, 0.35);
 
-  border: 0.08em solid #8a8377;
-  border-radius: 0.08em;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(0, 0, 0, 0.035) 0%, transparent 40%),
+    radial-gradient(circle at 75% 60%, rgba(0, 0, 0, 0.03) 0%, transparent 35%),
+    radial-gradient(circle at 50% 85%, rgba(255, 255, 255, 0.4) 0%, transparent 45%),
+    #d6d1c7;
+  background-blend-mode: multiply, multiply, screen, normal;
+
+  border: none;
+  outline: 0.08em solid rgba(0, 0, 0, 0.12);
+  outline-offset: -0.08em;
+
+  clip-path: polygon(
+    1% 8%, 6% 2%, 14% 6%, 22% 1%, 31% 5%, 40% 1%, 49% 4%,
+    58% 0%, 67% 4%, 76% 1%, 85% 5%, 93% 2%, 99% 7%,
+    98% 22%, 100% 35%, 97% 48%, 100% 62%, 98% 75%, 99% 88%,
+    93% 94%, 85% 99%, 76% 95%, 67% 99%, 58% 96%, 49% 100%,
+    40% 96%, 31% 99%, 22% 95%, 14% 99%, 6% 96%, 1% 92%,
+    3% 78%, 0% 65%, 3% 52%, 0% 39%, 3% 26%, 1% 14%
+  );
 
   box-shadow:
-    inset 0 0.08em 0 rgba(255, 255, 255, 0.5),
-    0.04em 0.04em 0 rgba(0, 0, 0, 0.15);
+    0.06em 0.08em 0 rgba(0, 0, 0, 0.1),
+    0.12em 0.16em 0.2em rgba(0, 0, 0, 0.15);
 
   cursor: pointer;
-  transform: rotate(0.6deg);
+  transform: rotate(0.6deg) scale(1);
 
   transition:
-    background-color 140ms ease,
-    border-color 140ms ease,
-    transform 140ms ease;
+    background-color 180ms ease,
+    transform 220ms cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 220ms ease,
+    outline-color 180ms ease;
 }
 
 .start-button:hover {
-  background: #e4e0d5;
-  border-color: #6f6a5f;
-  transform: rotate(0.6deg) translateY(-0.08em);
+  transform: rotate(-0.4deg) scale(1.08) translateY(-0.14em);
+  outline-color: rgba(122, 74, 47, 0.35);
+  box-shadow:
+    0.06em 0.08em 0 rgba(0, 0, 0, 0.1),
+    0.3em 0.4em 0.6em rgba(0, 0, 0, 0.22);
 }
 
 .start-button:active {
-  background: #c3beb2;
-  transform: rotate(0.6deg) translateY(0.04em);
+  transform: rotate(-0.4deg) scale(1.02) translateY(0.03em);
+  text-shadow:
+    0 0.02em 0 rgba(255, 255, 255, 0.5),
+    0 -0.01em 0 rgba(0, 0, 0, 0.4);
   box-shadow:
-    inset 0 0.12em 0.2em rgba(0, 0, 0, 0.18);
+    0.03em 0.04em 0 rgba(0, 0, 0, 0.12);
 }
 
 .start-button:focus-visible {

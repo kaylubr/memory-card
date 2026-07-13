@@ -6,9 +6,10 @@ interface GameScreenProps {
   casts: Character[]
   isGameActive: boolean
   toggleActive: React.Dispatch<React.SetStateAction<boolean>>
+  shuffleCasts: () => void
 }
 
-const GameScreen = ({ casts, isGameActive, toggleActive }: GameScreenProps) => {
+const GameScreen = ({ casts, isGameActive, toggleActive, shuffleCasts }: GameScreenProps) => {
   const [guesses, setGuesses] = useState<number[]>([])
   const [highestScore, setHighestScore] = useState(0)
 
@@ -33,6 +34,7 @@ const GameScreen = ({ casts, isGameActive, toggleActive }: GameScreenProps) => {
           addGuess={setGuesses}
           highestScore={highestScore}
           setHighestScore={setHighestScore}
+          shuffleCasts={shuffleCasts}
         />
       </main>
     </div>

@@ -25,10 +25,15 @@ function App() {
     fetchCharacters();
   }, [])
 
+  const shuffleCasts = () => {
+    setCasts(casts.toSorted(() => Math.random() - 0.5))
+  }
+
   return isGameActive 
     ? <GameScreen casts={casts} 
       isGameActive={isGameActive}
       toggleActive={setIsGameActive}
+      shuffleCasts={shuffleCasts}
     /> 
     : <DefaultScreen toggleActive={setIsGameActive}/>
 }

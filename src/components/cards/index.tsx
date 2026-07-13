@@ -9,18 +9,27 @@ interface CardProps {
   addGuess: React.Dispatch<React.SetStateAction<number[]>>
   highestScore: number
   setHighestScore: React.Dispatch<React.SetStateAction<number>>
+  shuffleCasts: () => void,
+  isAnimating: boolean
+  setIsAnimating: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 const Card = ({ 
   cast, 
   isFlipped, 
-  setIsFlipped, 
+  setIsFlipped,
   guesses, 
   addGuess,
   highestScore,
-  setHighestScore
+  setHighestScore,
+  shuffleCasts,
+  isAnimating,
+  setIsAnimating
 }: CardProps) => {
   const clickCard = () => {
+    if (isAnimating) return;
+
+    setIsAnimating(true)
     if (guesses.includes(cast.id) && guesses.length > highestScore) {
       setHighestScore(guesses.length)
       addGuess([])
@@ -29,8 +38,12 @@ const Card = ({
     }
     setIsFlipped(!isFlipped)
     setTimeout(() => {
+      shuffleCasts()
+    }, 600)
+    setTimeout(() => {
       setIsFlipped(isFlipped)
-    }, 800)
+      setIsAnimating(false)
+    }, 660)
   }
   
   return (

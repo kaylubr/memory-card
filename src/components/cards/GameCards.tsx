@@ -10,6 +10,7 @@ interface GameCardsProps {
   addGuess: React.Dispatch<React.SetStateAction<number[]>>
   highestScore: number
   setHighestScore: React.Dispatch<React.SetStateAction<number>>
+  shuffleCasts: () => void
 }
 
 const GameCards = ({ 
@@ -17,9 +18,11 @@ const GameCards = ({
   guesses, 
   addGuess, 
   highestScore, 
-  setHighestScore 
+  setHighestScore,
+  shuffleCasts
 }: GameCardsProps) => {
   const [isFlipped, setIsFlipped] = useState(true)
+  const [isAnimating, setIsAnimating] = useState(false);
 
   return (
     <div className="game-grid">
@@ -33,6 +36,9 @@ const GameCards = ({
           addGuess={addGuess}
           highestScore={highestScore}
           setHighestScore={setHighestScore}
+          shuffleCasts={shuffleCasts}
+          isAnimating={isAnimating}
+          setIsAnimating={setIsAnimating}
         />
       ))}
     </div>

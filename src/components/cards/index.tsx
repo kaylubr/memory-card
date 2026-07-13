@@ -5,10 +5,28 @@ interface CardProps {
   cast: Character
   isFlipped: boolean
   setIsFlipped: React.Dispatch<React.SetStateAction<boolean>>
+  guesses: number[]
+  addGuess: React.Dispatch<React.SetStateAction<number[]>>
+  highestScore: number
+  setHighestScore: React.Dispatch<React.SetStateAction<number>>
 }
 
-const Card = ({ cast, isFlipped, setIsFlipped }: CardProps) => {
-  const flipCard = () => {
+const Card = ({ 
+  cast, 
+  isFlipped, 
+  setIsFlipped, 
+  guesses, 
+  addGuess,
+  highestScore,
+  setHighestScore
+}: CardProps) => {
+  const clickCard = () => {
+    if (guesses.includes(cast.id) && guesses.length > highestScore) {
+      setHighestScore(guesses.length)
+      addGuess([])
+    } else {
+      addGuess(guesses.concat(cast.id))
+    }
     setIsFlipped(!isFlipped)
     setTimeout(() => {
       setIsFlipped(isFlipped)
@@ -20,7 +38,7 @@ const Card = ({ cast, isFlipped, setIsFlipped }: CardProps) => {
       className={`memory-card ${isFlipped ? 'is-flipped' : ''}`}
       tabIndex={0}
       role="button"
-      onClick={flipCard}
+      onClick={clickCard}
     >
       <div className="memory-card-inner">
         <div className="memory-card-face memory-card-back">

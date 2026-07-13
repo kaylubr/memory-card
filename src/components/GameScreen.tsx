@@ -9,8 +9,7 @@ interface GameScreenProps {
 }
 
 const GameScreen = ({ casts, isGameActive, toggleActive }: GameScreenProps) => {
-  const [score, setScore] = useState(0)
-  const [guesses, setGuessss] = useState([])
+  const [guesses, setGuesses] = useState<number[]>([])
   const [highestScore, setHighestScore] = useState(0)
 
   return (
@@ -23,12 +22,18 @@ const GameScreen = ({ casts, isGameActive, toggleActive }: GameScreenProps) => {
           Go back
         </button>
         <div>
-          <h2>Score: {score}</h2>
-          <h2>Highest score: {score}</h2>
+          <h2>Score: {guesses.length}</h2>
+          <h2>Highest score: {highestScore}</h2>
         </div>
       </header>
       <main>
-        <GameCards casts={casts} />
+        <GameCards 
+          casts={casts} 
+          guesses={guesses}
+          addGuess={setGuesses}
+          highestScore={highestScore}
+          setHighestScore={setHighestScore}
+        />
       </main>
     </div>
   )

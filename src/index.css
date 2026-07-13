@@ -8,7 +8,6 @@
 
 :root {
   --heading-font: "Special Elite", system-ui;
-  --body-font: "Source Sans 3", sans-serif;
 }
 
 body {
@@ -139,6 +138,37 @@ body {
   height: 100vh;
   justify-content: center;
   align-content: center;
+}
+
+header {
+  font-family: var(--heading-font);
+  font-size: 1.2rem;
+  display: flex;
+  justify-content: space-between;
+  padding: 1.5rem 5rem;
+  gap: 1rem;
+  color: #181818;
+  text-shadow:
+    0.04em 0.04em 0 #d6d1c7,
+    0.08em 0.08em 0 rgba(0, 0, 0, 0.12);
+}
+
+.back-btn {
+  font-family: var(--heading-font);
+  font-size: 2.5rem;
+  text-shadow:
+    0.04em 0.04em 0 #d6d1c7,
+    0.08em 0.08em 0 rgba(0, 0, 0, 0.12);
+  border: none;
+  background: none;
+  padding: 0;
+  color: #181818;
+  cursor: pointer;
+}
+
+.back-btn:hover {
+  cursor: pointer;
+  text-decoration: underline;
 }
 
 .game-container > main {

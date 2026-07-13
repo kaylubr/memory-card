@@ -25,7 +25,12 @@ function App() {
     fetchCharacters();
   }, [])
 
-  return isGameActive ? <GameScreen casts={casts} /> : <DefaultScreen toggleActive={setIsGameActive}/>
+  return isGameActive 
+    ? <GameScreen casts={casts} 
+      isGameActive={isGameActive}
+      toggleActive={setIsGameActive}
+    /> 
+    : <DefaultScreen toggleActive={setIsGameActive}/>
 }
 
 export default App
